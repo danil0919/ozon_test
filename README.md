@@ -1,5 +1,5 @@
-# Тестовое задание OZON
-## Описание
+# Тестовое задание OZON <br><br>
+# Описание
 
 Сервис предоставляет API по созданию сокращенных ссылок. Принимает следующие запросы:
 ### GET /{token}
@@ -75,7 +75,7 @@ token - строка, состоящая из 10 символов <br>
 }
 ``` 
 
-## Настройка
+# Настройка
 
 Конфиг сервера можно найти в файле [config/apiserver.toml](../config/apiserver.toml) либо указать путь к своему конфигу при запуске (подробнее в разделе "Запуск")
 
@@ -87,7 +87,7 @@ database_url = "host=host.docker.internal dbname=ozon_test sslmode=disable user=
 store_type = "sql"
 host = "http://localhost:8080"
 ```
-## Запуск
+# Запуск
 
 ### Вручную
 ```
@@ -111,7 +111,7 @@ $ docker-compose build
 $ docker-compose up
 ```
 
-## Тесты
+# Тесты
 
 ```
 $ make test
