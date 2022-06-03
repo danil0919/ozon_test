@@ -104,7 +104,7 @@ Usage of ./apiserver:
         available stores: sql, internal (default "sql")
 $ ./apiserver 
 ```
->Для работы с внутренним хранилищемм в памяти приложения
+>Для работы c хранилищем в памяти приложения
 ```
 $ ./apiserver -store-type internal для работы с внутренним хранилищем
 ```
