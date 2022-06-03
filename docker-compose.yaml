@@ -1,0 +1,35 @@
+version: "3.8"
+services:
+  web:
+    container_name: server
+    build: ./
+    ports:
+      - "8080:8080"
+    command: /app/apiserver
+    # command: ["/app/apiserver","-store-type","internal"]
+    depends_on:
+      db:
+        condition: service_healthy
+  db:
+    container_name: db
+    image: postgres:14.1-alpine
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: ozon_test
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+  migrate:
+    container_name: migrator
+    network_mode: "host"
+    build: ./migrator
+    command:  
+      ["-path","/migrations/", "-database",  "postgres://postgres:root@localhost:5432/ozon_test?sslmode=disable", "up" ]
+    depends_on:
+      db:
+        condition: service_healthy

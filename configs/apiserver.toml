@@ -1,0 +1,5 @@
+bind_addr = ":8080"
+log_level = "debug"
+database_url = "host=host.docker.internal dbname=ozon_test sslmode=disable user=postgres password=root"
+store_type = "sql"
+host = "http://localhost:8080"
