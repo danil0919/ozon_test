@@ -103,7 +103,7 @@ Usage of ./apiserver:
   -store-type string
         available stores: sql, internal (default "sql")
 $ ./apiserver 
-//$ ./apiserver -store-type inernal для работы с внутренним хранилищем
+//$ ./apiserver -store-type internal для работы с внутренним хранилищем
 
 ```
 ### Docker
