@@ -94,7 +94,7 @@ host = "http://localhost:8080"
 //Миграция
 $ migrate -path migrations -database "postgres://localhost:5432/ozon_test?sslmode=disable" up
 
-//Серве
+//Сервер
 $ make
 $ ./apiserver -help
 Usage of ./apiserver:
@@ -117,7 +117,7 @@ $ docker-compose up
 $ make test
 ```
 
->Для успешного прохождения тестов в пакете sqlstore необходимо создать тестовую БД и запустить для нее миграцию. Путь к тестовой базе данных можно поменять в файле [internal/app/store/sqlstore/store_test.go](../internal/app/store/sqlstore/store_test.go) либо передать через переменную окружения DATABASE_URL.
+>Для успешного прохождения тестов пакета sqlstore, необходимо создать тестовую БД и запустить для нее миграцию. Путь к тестовой базе данных можно поменять в файле [internal/app/store/sqlstore/store_test.go](../internal/app/store/sqlstore/store_test.go) либо передать через переменную окружения DATABASE_URL.
 ```
 $ migrate -path migrations -database "postgres://localhost:5432/test_ozon_test?sslmode=disable" up
 ```
