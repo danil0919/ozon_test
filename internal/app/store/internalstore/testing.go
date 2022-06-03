@@ -10,9 +10,10 @@ func TestStore(testData map[string]*model.Link) *Store {
 	s := &Store{}
 	return &Store{
 		linkRepository: &LinkRepository{
-			store: s,
-			links: testData,
-			mu:    &sync.RWMutex{},
+			store:     s,
+			links:     testData,
+			linksLong: make(map[string]string),
+			mu:        &sync.RWMutex{},
 		},
 	}
 }

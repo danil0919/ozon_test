@@ -1,6 +1,7 @@
 package internalstore
 
 import (
+	"errors"
 	"sync"
 
 	"github.com/ozon_test/internal/app/model"
@@ -29,10 +30,8 @@ func (r *LinkRepository) IncreaseViews(l *model.Link) error {
 func (r *LinkRepository) Create(l *model.Link) error {
 	r.mu.Lock()
 	defer r.mu.Unlock()
-	if token, ok := r.linksLong[l.Link]; ok {
-		linkOld := r.links[token]
-		l.Token = linkOld.Token
-		return nil
+	if _, ok := r.linksLong[l.Link]; ok {
+		return errors.New("already exists")
 	}
 	err := l.BeforeCreate()
 	if err != nil {

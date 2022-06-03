@@ -8,13 +8,12 @@ import (
 	"testing"
 
 	"github.com/ozon_test/internal/app/model"
-	"github.com/ozon_test/internal/app/store/sqlstore"
+	"github.com/ozon_test/internal/app/store/internalstore"
 	"github.com/stretchr/testify/assert"
 )
 
 func TestServer_HandleLinksGet(t *testing.T) {
-	store, teardown := sqlstore.TestStore(t)
-	defer teardown("links")
+	store := internalstore.TestStore(make(map[string]*model.Link))
 	s := NewServer(store)
 
 	l := model.TestLink(t)
@@ -51,8 +50,7 @@ func TestServer_HandleLinksGet(t *testing.T) {
 	}
 }
 func TestServer_HandleLinksCreate(t *testing.T) {
-	store, teardown := sqlstore.TestStore(t)
-	defer teardown("links")
+	store := internalstore.TestStore(make(map[string]*model.Link))
 	s := NewServer(store)
 
 	link := model.TestLink(t)
@@ -97,8 +95,7 @@ func TestServer_HandleLinksCreate(t *testing.T) {
 }
 
 func TestServer_HandleLinksGetInfo(t *testing.T) {
-	store, teardown := sqlstore.TestStore(t)
-	defer teardown("links")
+	store := internalstore.TestStore(make(map[string]*model.Link))
 	s := NewServer(store)
 
 	l := model.TestLink(t)

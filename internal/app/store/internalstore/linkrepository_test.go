@@ -29,7 +29,7 @@ func TestLinkRepository_Create(t *testing.T) {
 	assert.NoError(t, err)
 
 	err = s.Link().Create(l)
-	assert.NoError(t, err)
+	assert.Error(t, err)
 
 	l, err = s.Link().Find(l.Token)
 	assert.NoError(t, err)
