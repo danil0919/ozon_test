@@ -77,7 +77,7 @@ token - строка, состоящая из 10 символов <br>
 
 # Настройка
 
-Конфиг сервера можно найти в файле [config/apiserver.toml](../config/apiserver.toml) либо указать путь к своему конфигу при запуске (подробнее в разделе "Запуск")
+Конфиг сервера можно найти в файле [config/apiserver.toml](/config/apiserver.toml) либо указать путь к своему конфигу при запуске (подробнее в разделе "Запуск")
 
 > host используется только для вывода short_url в http ответах, предшествуя токену
 ```
@@ -117,7 +117,7 @@ $ docker-compose up
 $ make test
 ```
 
->Для успешного прохождения тестов пакета sqlstore, необходимо создать тестовую БД и запустить для нее миграцию. Путь к тестовой базе данных можно поменять в файле [internal/app/store/sqlstore/store_test.go](../internal/app/store/sqlstore/store_test.go) либо передать через переменную окружения DATABASE_URL.
+>Для успешного прохождения тестов пакета sqlstore, необходимо создать тестовую БД и запустить для нее миграцию. Путь к тестовой базе данных можно поменять в файле [internal/app/store/sqlstore/store_test.go](internal/app/store/sqlstore/store_test.go) либо передать через переменную окружения DATABASE_URL.
 ```
 $ migrate -path migrations -database "postgres://localhost:5432/test_ozon_test?sslmode=disable" up
 ```
