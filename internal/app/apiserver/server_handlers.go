@@ -45,7 +45,7 @@ func (s *server) handleLinkCreate() http.HandlerFunc {
 		req := &request{}
 		if err := json.NewDecoder(r.Body).Decode(req); err != nil {
 			s.logger.Debug(err)
-			s.error(w, r, http.StatusBadRequest, err)
+			s.error(w, r, http.StatusBadRequest, errors.New("Incorrect input data"))
 			return
 		}
 		link := &model.Link{
