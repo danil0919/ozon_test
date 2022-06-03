@@ -106,7 +106,7 @@ $ ./apiserver
 ```
 >Для работы c хранилищем в памяти приложения
 ```
-$ ./apiserver -store-type internal для работы с внутренним хранилищем
+$ ./apiserver -store-type internal
 ```
 
 ### Docker
