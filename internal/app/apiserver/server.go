@@ -11,7 +11,6 @@ import (
 )
 
 const (
-	sessionName            = "gopherschool"
 	ctxKeyRequestID ctxKey = iota
 )
 
