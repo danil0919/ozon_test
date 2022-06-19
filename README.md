@@ -1,5 +1,5 @@
-# Тестовое задание OZON
-## Описание
+# Тестовое задание OZON <br><br>
+# Описание сервиса
 
 Сервис предоставляет API по созданию сокращенных ссылок. Принимает следующие запросы:
 ### GET /{token}
@@ -75,9 +75,9 @@ token - строка, состоящая из 10 символов <br>
 }
 ``` 
 
-## Настройка
+# Настройка
 
-Конфиг сервера можно найти в файле [config/apiserver.toml](../config/apiserver.toml) либо указать путь к своему конфигу при запуске (подробнее в разделе "Запуск")
+Конфиг сервера можно найти в файле [config/apiserver.toml](config/apiserver.toml), либо указать путь к своему конфигу при запуске (подробнее в разделе "Запуск")
 
 > host используется только для вывода short_url в http ответах, предшествуя токену
 ```
@@ -87,10 +87,14 @@ database_url = "host=host.docker.internal dbname=ozon_test sslmode=disable user=
 store_type = "sql"
 host = "http://localhost:8080"
 ```
-## Запуск
+# Запуск
 
 ### Вручную
 ```
+//Миграция
+$ migrate -path migrations -database "postgres://localhost:5432/ozon_test?sslmode=disable" up
+
+//Сервер
 $ make
 $ ./apiserver -help
 Usage of ./apiserver:
@@ -99,17 +103,26 @@ Usage of ./apiserver:
   -store-type string
         available stores: sql, internal (default "sql")
 $ ./apiserver 
-
 ```
+>Для работы c хранилищем в памяти приложения
+```
+$ ./apiserver -store-type internal
+```
+
 ### Docker
 ```
 $ docker-compose build
 $ docker-compose up
 ```
 
-## Тесты
+# Тесты
 
 ```
 $ make test
+```
+
+>Для успешного прохождения тестов пакета sqlstore, необходимо создать тестовую БД и запустить для нее миграцию. Путь к тестовой базе данных можно поменять в файле [internal/app/store/sqlstore/store_test.go](internal/app/store/sqlstore/store_test.go), либо передать через переменную окружения DATABASE_URL.
+```
+$ migrate -path migrations -database "postgres://localhost:5432/test_ozon_test?sslmode=disable" up
 ```
 
